@@ -21,3 +21,21 @@ git push -u origin main#MERN25
 git add .  <for all files created or updated>
 git commit -m <commit message>
 git push origin main
+
+
+
+///////////////////
+
+go to any directory where you want to clone and run below
+
+git clone https://github.com/MishraAshish/MERN25A.git
+
+git clone for the first time
+
+subsequent times we need to run - git pull
+
+if you have changes in your machine - so either you resolve that or use 
+git reset --hard and then take git pull
+
+git clean -fd 
+git pull
