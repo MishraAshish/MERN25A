@@ -33,3 +33,11 @@ var add = function(a, b, c, d, e) {
 }
 
 console.log(add(1, 2, 3, 4, 5)); // Output: 10
+
+
+
+///////////////////////
+//- Implement all data types including symbol and bigInt
+//- Implement all types of functions at least one example each
+//- Try exploring overloading in functions changing number of parameters but keeping function name same
+//- See how we are able to access a function even before its definition
