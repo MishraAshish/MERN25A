@@ -17,7 +17,7 @@ var Employee = {
             console.log(` Context of 'this' inside setTimeout:`, this);
             // 'this' inside setTimeout refers to the global object or undefined in strict mode
             console.log(`Inside setTimeout: Name: ${this.name}, Age: ${this.age}, Position: ${this.position}`);
-        }, 3000);
+        }.bind(this), 3000);
     }
 }
 
