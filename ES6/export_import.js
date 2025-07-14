@@ -23,7 +23,7 @@ export const priceList = [{}] //named export
 
 //default export - these are allowed to be only one from a file
 //default exports should have to be similar as the name of the file
-export const defaultProduct = [{}] //default export
+export default defaultProduct = [{}] //default export 
 
 
 // another file contants.js

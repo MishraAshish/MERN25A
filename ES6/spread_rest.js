@@ -34,7 +34,8 @@ let sum = (p1,p2,p3,p4)=>p1+p2+p3+p4
 console.log(sum(numberList[0], numberList[1],numberList[2],numberList[3]));
 console.log(sum(...numberList));//extract using spread operator
 
-//using rest parameters
+//using rest parameters 
+//this has to be the last parameter in your function
 //let largeSum = (...params) => params.reduce((prev,curr)=>prev+curr,0)
 
 let largeSum = (...params) => {
