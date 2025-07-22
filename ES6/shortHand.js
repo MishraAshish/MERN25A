@@ -30,4 +30,10 @@ console.log("Animal Sound using ES6 way ", animalSoundES6)
 console.log("Animal Sound using ES6 way "+ JSON.stringify(animalSoundES6))
 
 
+globalThis.userInfo = {
+    name: "John Doe",
+    age: 30,
+    email: "mr john"
+}
+
 module.exports = animalSoundES6;
