@@ -65,3 +65,7 @@
 
 // package-lock.json is the file that contains the exact versions of the dependencies installed and resolves the dependencies tree.
 
+// if we already have a package.json file, we can install the dependencies using
+// npm install or npm i
+
+// this will install all the dependencies listed in the package.json file
