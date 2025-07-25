@@ -39,3 +39,29 @@ git reset --hard and then take git pull
 
 git clean -fd 
 git pull
+
+
+
+//NPM setup 
+
+// Install express framework
+// npm install express
+
+// create server.js file in the same directory
+// add npm start command and run as below
+
+// npm start
+
+// start - is the defult command to run the application
+// build - is used to build the application for production and to run build scripts
+// we need to use
+// npm run build
+
+
+// To detect changes in the code and restart the server automatically, we can use nodemon.
+// Install nodemon as a development dependency:
+// Dev Dependencies for development, it will not be included in production build
+// npm i nodemon -D
+
+// Normal dependencies for production
+// npm i express cors body-parser
