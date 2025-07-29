@@ -69,3 +69,13 @@
 // npm install or npm i
 
 // this will install all the dependencies listed in the package.json file
+
+
+//get - fetch data from the server just needs the resource URL
+//post - send data to the server, needs the resource URL and the data to be sent in the body
+// req.body - json format data sent in the request body
+
+// req.query - query parameters sent in the URL
+// localhost:9000/first?name=John&age=30
+// req.params - route parameters sent in the URL
+// localhost:9000/first/John/30
