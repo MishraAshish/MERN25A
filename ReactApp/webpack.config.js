@@ -22,6 +22,7 @@ config = {
             },
             {
                 test: /\.css$/, //to load css files
+                exclude: /node_modules/,
                 use: ['style-loader', 'css-loader'] //use style-loader and css-loader to load css files
             },
             {
@@ -36,3 +37,5 @@ config = {
 
 
 module.exports = config; //export the config object to be used by webpack
+
+//bower - can also be used to manage front-end libraries less and scss

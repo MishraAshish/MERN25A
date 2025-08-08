@@ -8,6 +8,7 @@ const root = ReactDOM.createRoot(document.getElementById("root")); //create a ro
 
 //bootstrap the React application
 //this will render the Application component inside the root element
+// at this point very first time react-dom creates the virtual DOM
 root.render(
     <Application /> //render the Application component inside the root element
 );
