@@ -36,3 +36,8 @@ export default class Application extends Component {
         );
     }
 }
+
+// Create a component with Your name - CommonComponents
+// In that component created three div section to display information about you -(not real) with different background colors and boder extension should be .jsx
+// Create a navigation link in header to navigate to your component
+// Create a route in app.js to render your component
