@@ -1,6 +1,7 @@
 import React, { Component, PureComponent, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./app.css";
+import "./style.css";
 import HeaderComponent from "./CommonComponents/HeaderComponent";
 import HomeComponent from "./CommonComponents/HomeComponent";
 import FooterComponent from "./CommonComponents/FooterComponent";
@@ -8,8 +9,9 @@ import About from "./CommonComponents/AboutComponent.jsx"; //complete path with 
 import NotFoundComponent from "./CommonComponents/NotFoundComponent";
 
 export default class Application extends Component {
-    constructor(parameters) {
-        super(parameters);
+    constructor(parameters){
+    
+        super();
         // Initialize state or bind methods if needed
         this.state = {timer: 0};   
         //this.startTimer(); // Start the timer when the component is created 

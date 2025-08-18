@@ -18,6 +18,9 @@ let NameComponent = (props) => {
                 <p>This is a functional Name component.</p>
                 <p>Component ID: {props.id + 1}</p>
             </div>
+            <label className="classSelector">Test Class Selector Style</label>
+
+            <label id="myCss" className="classSelector class2Selector" >Test ID Selector Style</label>
         </>
     );
 }
