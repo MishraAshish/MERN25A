@@ -6,13 +6,16 @@ export default class HomeComponent extends Component {
         super(parameters);
         // Initialize state or bind methods if needed
         this.state = {timer: 0};   
-        //this.startTimer(); // Start the timer when the component is created 
+        this.counter = 0; // Example of a class property
+        this.startTimer(); // Start the timer when the component is created 
     }
 
     // This method is used to start a timer that updates the state every second
     startTimer = () => {
         setInterval(() => {
             this.setState({timer: this.state.timer + 1});
+            this.counter++;
+            console.log("Counter: ", this.counter);
         },1000)
     }
 
@@ -30,6 +33,7 @@ export default class HomeComponent extends Component {
                     <h4> Substraction : {(val1 - val2)}</h4>
                     <h4> Timer : {(this.state.timer)}</h4>
                     <p>This is a simple React component.</p>
+                    <h4> Counter : {(this.counter)}</h4>
                 </div>
                 
                 <NameComponent name="Synergistic IT" id={this.state.timer}/>

@@ -1,7 +1,7 @@
 import React, { Component, PureComponent, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./app.css";
-import "./style.css";
+//import "./style.css";
 import HeaderComponent from "./CommonComponents/HeaderComponent";
 import HomeComponent from "./CommonComponents/HomeComponent";
 import FooterComponent from "./CommonComponents/FooterComponent";
@@ -28,6 +28,7 @@ export default class Application extends Component {
                             <Route path="/" element={<Navigate to="/home" />} />
                             <Route path="/home" element={<HomeComponent />} />
                             <Route path="/about" element={<About />} />
+                            <Route path="/about/:id/:name" element={<About />} /> 
                             <Route path="*" element={<NotFoundComponent />} />
                             {/* <HomeComponent />  
                             <About /> */}
