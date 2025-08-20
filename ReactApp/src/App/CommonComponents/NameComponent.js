@@ -7,6 +7,10 @@ let NameComponent = (props) => {
 
     //let [count, setCount] = useState(0); //useState is a hook that allows you to add state to functional components
 
+    //props.children - is used to access the children passed to the component
+    //props.id - is used to access the id property passed to the component
+    //props.address - is used to access the address property passed to the component
+
     return (
         <>
             <div style={{backgroundColor: "lightGreen", padding: "5px", border: "1px solid black"}}>
@@ -21,6 +25,20 @@ let NameComponent = (props) => {
             <label className="classSelector">Test Class Selector Style</label>
 
             <label id="myCss" className="classSelector class2Selector" >Test ID Selector Style</label>
+
+            <p>{props.address.firstLine}</p>
+            <p>{props.address.secondLine}</p>
+            <p>{props.address.city}</p>
+            <p>{props.address.state}</p>
+
+            {props.children /* This will render the children passed to the component */}
+
+            {props.children && props.children[0]} {/* This will render the first child passed to the component, if any */}
+
+            {/* Button to start the timer */}
+            {/* <button onClick={props.startTimer}>Start Timer</button> */}
+
+            <button onClick={() => props.startTimer(5)}>Start Timer</button>
         </>
     );
 }
@@ -30,3 +48,13 @@ export default NameComponent; //export the component to be used in other files
 //hooks are used to make state change in functional components
 
 // Fragment - a fragment is a way to group multiple elements without adding an extra node to the DOM
+
+//we should use default props to assign default values to the properties that we use in our component
+NameComponent.defaultProps = {
+    address : {
+        firstLine: "123 Default St",
+        secondLine: "Default City",
+        city: "Default City",
+        state: "DC"
+    }
+}

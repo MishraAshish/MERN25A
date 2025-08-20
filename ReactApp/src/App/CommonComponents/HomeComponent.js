@@ -5,15 +5,24 @@ export default class HomeComponent extends Component {
     constructor(parameters) {
         super(parameters);
         // Initialize state or bind methods if needed
-        this.state = {timer: 0};   
+        this.state = {
+            timer: 0,
+            name : "Synergistic IT",
+            address : {
+                firstLine : "21",
+                secondLine : "Main Street",
+                city : "New York",
+                state : "NY"
+            }
+        };   
         this.counter = 0; // Example of a class property
-        this.startTimer(); // Start the timer when the component is created 
+        //this.startTimer(); // Start the timer when the component is created 
     }
 
     // This method is used to start a timer that updates the state every second
-    startTimer = () => {
+    startTimer = (incrementer) => {
         setInterval(() => {
-            this.setState({timer: this.state.timer + 1});
+            this.setState({timer: this.state.timer + incrementer});
             this.counter++;
             console.log("Counter: ", this.counter);
         },1000)
@@ -36,7 +45,18 @@ export default class HomeComponent extends Component {
                     <h4> Counter : {(this.counter)}</h4>
                 </div>
                 
-                <NameComponent name="Synergistic IT" id={this.state.timer}/>
+                <NameComponent name="Synergistic IT" id={this.state.timer} address={this.state.address} 
+                                        startTimer={this.startTimer}>
+
+                    <p>This is a child component.</p>
+                    <p>Counter: {this.counter} </p>
+                </NameComponent>
+
+                <input type="text" placeholder="Enter your name" value={this.state.name} 
+                    onChange={(e) => this.setState({name: e.target.value})}
+                />
+
+                <input type="number" placeholder="Enter your name - Free Flow" />
             </div>
         );
     }
