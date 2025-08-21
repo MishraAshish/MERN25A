@@ -17,6 +17,9 @@ export default class HomeComponent extends Component {
         };   
         this.counter = 0; // Example of a class property
         //this.startTimer(); // Start the timer when the component is created 
+
+        //react references - this is used to refer to the current instance of the class
+        this.refName = React.createRef(); // Create a ref to access the input element
     }
 
     // This method is used to start a timer that updates the state every second
@@ -28,6 +31,33 @@ export default class HomeComponent extends Component {
         },1000)
     }
 
+    onTextChange = (event) => {
+        // This method can be used to handle text input changes 
+        console.log("Text changed: ", event.target.value);
+
+        //this.state.name = event.target.value; // This is not the recommended way to update state in React
+        //batch process manner - so that it does not cause unnecessary re-renders
+        this.setState({name: event.target.value}); // This is the correct way to update state in React
+        // Note: setState is asynchronous, so the state may not be updated immediately
+
+        //console.log("Text changed in state : ", this.state.name);
+
+        // Force a re-render of the component
+        // Note: Using forceUpdate is generally not recommended as it bypasses React's state management
+        // this.forceUpdate(); // Force a re-render of the component
+
+        event.preventDefault(); // Prevent default form submission behavior if this is used in a form
+    }    
+
+    // This method is used to handle form submission
+    formSubmit = (event) => {
+        let name = this.refName.current.value; // Access the value of the input element using the ref
+        console.log("Form submitted with name: ", name);
+        this.setState({name: name}); // Update the state with the input value
+
+        event.preventDefault(); // Prevent default form submission behavior
+    }
+
     // render method is required in class components
     // it returns the JSX to be rendered - and this is termed as the "view" in MVC architecture and virtual DOM in React
     render() {
@@ -35,7 +65,7 @@ export default class HomeComponent extends Component {
         console.log("This is the Application component. Test Hot Reloading!");
         return (
             <div style={{padding: "5px", border: "1px solid red"}}> 
-                <div style={{backgroundColor: "lightblue", padding: "5px", border: "1px solid black"}}>
+                {/* <div style={{backgroundColor: "lightblue", padding: "5px", border: "1px solid black"}}>
                     <h1>Hello, World!</h1>
                     <h4> Sum : {(val1 + val2)}</h4>
                     <h4> Multiplication : {(val1 * val2)}</h4>
@@ -47,16 +77,23 @@ export default class HomeComponent extends Component {
                 
                 <NameComponent name="Synergistic IT" id={this.state.timer} address={this.state.address} 
                                         startTimer={this.startTimer}>
-
                     <p>This is a child component.</p>
                     <p>Counter: {this.counter} </p>
-                </NameComponent>
+                </NameComponent> */}
 
+                {/* controlled component - where the value of the input field is controlled by the state of the component */}
                 <input type="text" placeholder="Enter your name" value={this.state.name} 
-                    onChange={(e) => this.setState({name: e.target.value})}
+                      onChange={this.onTextChange}
+                    // onChange={(e) => this.setState({name: e.target.value})}
                 />
 
-                <input type="number" placeholder="Enter your name - Free Flow" />
+                {/* uncontrolled component - where the value of the input field is not controlled by the state of the component */}
+                <form action="/user" method="post" style={{backgroundColor: "lightblue", padding: "5px", border: "1px solid black" , margin: "10px"}} >
+                    <input type="text" placeholder="Enter your name - Free Flow" maxLength={25}
+                            ref={this.refName} // Attach the ref to the input element
+                        />
+                    <input type="submit" value="Submit" onClick={this.formSubmit}/>
+                </form>
             </div>
         );
     }
