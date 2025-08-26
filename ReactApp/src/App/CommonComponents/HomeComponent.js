@@ -16,19 +16,34 @@ export default class HomeComponent extends Component {
             }
         };   
         this.counter = 0; // Example of a class property
-        //this.startTimer(); // Start the timer when the component is created 
+        this.timer = null; // To hold the interval ID for the timer
 
+        this.startTimer(); // Start the timer when the component is created         
         //react references - this is used to refer to the current instance of the class
         this.refName = React.createRef(); // Create a ref to access the input element
+        
+        //accessing the view - will not work in constructor
+        // this.refName.current.value = "Hello"; // This will not work here as the component is not yet mounted
+        // this.refName.current.focus(); // Set focus to the input element when the component is mounted
     }
 
+    componentDidMount() {
+        // This method is called after the component is mounted (inserted into the DOM)
+        console.log("Component did mount - HomeComponent");
+        setTimeout(() => {
+            this.refName.current.value = "Hello"; // Set initial value to the input element when the component is mounted
+            this.refName.current.focus(); // Set focus to the input element when the component is mounted    
+        }, 2000);        
+    }
     // This method is used to start a timer that updates the state every second
     startTimer = (incrementer) => {
-        setInterval(() => {
-            this.setState({timer: this.state.timer + incrementer});
-            this.counter++;
-            console.log("Counter: ", this.counter);
-        },1000)
+        this.timer = setInterval(() => {
+                        this.setState({timer: this.state.timer + incrementer});
+                        this.counter++;
+                        console.log("Counter: ", this.counter);
+                    },1000);
+            
+            //clearInterval(this.timer); // Clear the interval to stop the timer
     }
 
     onTextChange = (event) => {
@@ -57,6 +72,13 @@ export default class HomeComponent extends Component {
 
         event.preventDefault(); // Prevent default form submission behavior
     }
+
+    // Lifecycle method - called when the component is about to be removed from the DOM
+    componentWillUnmount() {
+        clearInterval(this.timer); // Clear the interval to stop the timer
+        console.log("Component will unmount - HomeComponent");
+    }
+
 
     // render method is required in class components
     // it returns the JSX to be rendered - and this is termed as the "view" in MVC architecture and virtual DOM in React
