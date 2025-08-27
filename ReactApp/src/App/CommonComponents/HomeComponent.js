@@ -1,7 +1,10 @@
 import React, { Component, PureComponent } from "react";
 import NameComponent from "./NameComponent";
 
-export default class HomeComponent extends Component {
+// PureComponent - it implements shouldComponentUpdate with a shallow prop and state comparison
+export default class HomeComponent extends PureComponent {
+// Component - it does not implement shouldComponentUpdate, so it always returns true by default
+//export default class HomeComponent extends Component {
     constructor(parameters) {
         super(parameters);
         // Initialize state or bind methods if needed
@@ -13,12 +16,13 @@ export default class HomeComponent extends Component {
                 secondLine : "Main Street",
                 city : "New York",
                 state : "NY"
-            }
+            },
+            counter: 0
         };   
         this.counter = 0; // Example of a class property
         this.timer = null; // To hold the interval ID for the timer
 
-        this.startTimer(); // Start the timer when the component is created         
+        //this.startTimer(); // Start the timer when the component is created         
         //react references - this is used to refer to the current instance of the class
         this.refName = React.createRef(); // Create a ref to access the input element
         
@@ -30,10 +34,10 @@ export default class HomeComponent extends Component {
     componentDidMount() {
         // This method is called after the component is mounted (inserted into the DOM)
         console.log("Component did mount - HomeComponent");
-        setTimeout(() => {
-            this.refName.current.value = "Hello"; // Set initial value to the input element when the component is mounted
-            this.refName.current.focus(); // Set focus to the input element when the component is mounted    
-        }, 2000);        
+        // setTimeout(() => {
+        //     this.refName.current.value = "Hello"; // Set initial value to the input element when the component is mounted
+        //     this.refName.current.focus(); // Set focus to the input element when the component is mounted    
+        // }, 2000);        
     }
     // This method is used to start a timer that updates the state every second
     startTimer = (incrementer) => {
@@ -64,6 +68,67 @@ export default class HomeComponent extends Component {
         event.preventDefault(); // Prevent default form submission behavior if this is used in a form
     }    
 
+    // whether it should re-render or not
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     // This method is used to determine whether the component should re-render or not
+    //     // It is called before the render method and can be used to optimize performance
+    //     console.log("shouldComponentUpdate - HomeComponent");
+    //     //return true; // Return true to allow re-rendering
+    //     //return false; // Return false to prevent re-rendering
+
+    //     console.log("Current State: ", this.state);
+    //     console.log("Next State: ", nextState);
+
+    //     // Example: Only re-render if the timer value has changed
+    //     if (this.state.timer !== nextState.timer || this.state.name !== nextState.name 
+    //                             || this.state.counter !== nextState.counter) {
+    //         return true; // Allow re-rendering if timer or name has changed
+    //     }
+    //     return false; // Prevent re-rendering if nothing relevant has changed
+    // }
+
+    //update life cycle methods called after render
+    getSnapshotBeforeUpdate(prevProps, prevState){
+        console.log("getSnapshotBeforeUpdate");
+        console.log("prevState", prevState);
+        console.log("prevProps", prevProps);
+
+        //this.prevUser = prevState.user;
+        // this.setState({
+        //     user : this.prevUser
+        // })
+
+        return {
+            prevState,
+            prevProps
+        }
+    }
+
+    componentDidUpdate(prevState, prevProps){
+        console.log("componentDidUpdate");
+        // console.log("prevState",prevState);
+        // console.log("prevProps", prevProps);
+
+        // this.setState({
+        //     uState : prevState.uState
+        // })
+    }
+
+    incrementCounter = () => {
+        if (this.state.counter < 10) {
+            this.setState({counter: this.state.counter + 1});
+            
+        } else {
+            this.setState({counter: this.state.counter});
+
+            // this.state.counter = 10; // Directly modifying state - not recommended
+            // //this skips the shouldComponentUpdate check and forces a re-render
+            // this.forceUpdate(); // Force a re-render of the component
+        }
+
+        console.log("Counter: ", this.state.counter);
+    }
+
     // This method is used to handle form submission
     formSubmit = (event) => {
         let name = this.refName.current.value; // Access the value of the input element using the ref
@@ -74,6 +139,7 @@ export default class HomeComponent extends Component {
     }
 
     // Lifecycle method - called when the component is about to be removed from the DOM
+    // to clear any data updates or subscriptions to avoid memory leaks
     componentWillUnmount() {
         clearInterval(this.timer); // Clear the interval to stop the timer
         console.log("Component will unmount - HomeComponent");
@@ -84,7 +150,8 @@ export default class HomeComponent extends Component {
     // it returns the JSX to be rendered - and this is termed as the "view" in MVC architecture and virtual DOM in React
     render() {
         let val1 = 20, val2 = 10; //example of variable declaration and initialization
-        console.log("This is the Application component. Test Hot Reloading!");
+        //console.log("This is the Application component. Test Hot Reloading!");
+        console.log("Re-render!");
         return (
             <div style={{padding: "5px", border: "1px solid red"}}> 
                 {/* <div style={{backgroundColor: "lightblue", padding: "5px", border: "1px solid black"}}>
@@ -108,6 +175,8 @@ export default class HomeComponent extends Component {
                       onChange={this.onTextChange}
                     // onChange={(e) => this.setState({name: e.target.value})}
                 />
+                <button  onClick={this.incrementCounter}>Increment Timer</button>
+                <p>Counter: {this.state.counter} </p>
 
                 {/* uncontrolled component - where the value of the input field is not controlled by the state of the component */}
                 <form action="/user" method="post" style={{backgroundColor: "lightblue", padding: "5px", border: "1px solid black" , margin: "10px"}} >
