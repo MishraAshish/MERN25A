@@ -1,8 +1,9 @@
 import React, { Component, PureComponent } from "react";
+import PropTypes from "prop-types"; // Import PropTypes for type checking
 import NameComponent from "./NameComponent";
 
 // PureComponent - it implements shouldComponentUpdate with a shallow prop and state comparison
-export default class HomeComponent extends PureComponent {
+export default class HomeComponent extends Component {
 // Component - it does not implement shouldComponentUpdate, so it always returns true by default
 //export default class HomeComponent extends Component {
     constructor(parameters) {
@@ -185,11 +186,16 @@ export default class HomeComponent extends PureComponent {
                         />
                     <input type="submit" value="Submit" onClick={this.formSubmit}/>
                 </form>
+
+                <p>Name is {this.props.userName}</p>
             </div>
         );
     }
 }
 
+HomeComponent.propTypes = {
+    userName : PropTypes.string.isRequired
+}
 
 // Create a contorolled and uncontrolled components - an example
 // Sharing data between parent and child components (child, properties, object, classes) - an example
