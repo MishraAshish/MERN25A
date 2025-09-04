@@ -54,8 +54,10 @@ export default class HomeComponent extends Component {
     onTextChange = (event) => {
         // This method can be used to handle text input changes 
         console.log("Text changed: ", event.target.value);
+        //console.log("Name changed: ", this.state.name);
 
-        //this.state.name = event.target.value; // This is not the recommended way to update state in React
+        //this.state.name = " Himavan ";//event.target.value; // This is not the recommended way to update state in React
+
         //batch process manner - so that it does not cause unnecessary re-renders
         this.setState({name: event.target.value}); // This is the correct way to update state in React
         // Note: setState is asynchronous, so the state may not be updated immediately
@@ -64,7 +66,7 @@ export default class HomeComponent extends Component {
 
         // Force a re-render of the component
         // Note: Using forceUpdate is generally not recommended as it bypasses React's state management
-        // this.forceUpdate(); // Force a re-render of the component
+        //this.forceUpdate(); // Force a re-render of the component
 
         event.preventDefault(); // Prevent default form submission behavior if this is used in a form
     }    
