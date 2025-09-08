@@ -5,8 +5,10 @@
 // creating and updating the ref element (useRef)
 
 import React, { useState, useRef } from "react";
-import { connect } from "react-redux"; //helps to connect react component with redux store
+//import { connect } from "react-redux"; //helps to connect react component with redux store
+
 import { addUserToStore } from "../../State/User/UserAction";
+import { useDispatch, useSelector } from "react-redux";
 
 let UserComponent = (props)=>{
 
@@ -16,16 +18,19 @@ let UserComponent = (props)=>{
     //     this.state = {}
     // }
     //this.state.userName = "new name"
-
     console.log("Useromponent")
     //this allows us to access the state from store as we do with mapStateToProps
 
+    //its the alternative to connect and mapStateToProps
+    let user = useSelector(store=>store.userState.user)
+    
     //useState - hook implements an object to create the state and a callback to udpate the state
-    let [userName, updateUserName] = useState(props.user.userName)
-    let [password, updateUserPassword] = useState(props.user.password)
-    let [street, updateUserAddress] = useState(props.user.street)
-    let [mobile, updateUserMobile] = useState(props.user.mobile)
+    let [userName, updateUserName] = useState(user.userName)
+    let [password, updateUserPassword] = useState(user.password)
+    let [street, updateUserAddress] = useState(user.street)
+    let [mobile, updateUserMobile] = useState(user.mobile)
 
+    let dispatcher = useDispatch() //this is the alternative to connect and mapDispatchToProps
 
     let textBoxOnChange = (evt)=>{
         //using the state updater to update the userName state
@@ -37,12 +42,19 @@ let UserComponent = (props)=>{
         //     userName, street
         // } 
         //this is the call to dispatcher using action creater
-        props.addUser({
+        // props.addUser({
+        //     userName,
+        //     password, 
+        //     street, 
+        //     mobile
+        // })
+
+        dispatcher(addUserToStore({
             userName,
             password, 
             street, 
             mobile
-        })
+        }))
 
         alert("User saved successfully in store")
 
@@ -122,5 +134,5 @@ let mapDispatchToProps = (dispatch)=>{
     }
 };
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserComponent);
+//export default connect(mapStateToProps, mapDispatchToProps)(UserComponent);
+export default UserComponent;

@@ -14,6 +14,6 @@ const root = ReactDOM.createRoot(document.getElementById("root")); //create a ro
 // at this point very first time react-dom creates the virtual DOM
 root.render(
     <Provider store={store}>
-        <Application /> //render the Application component inside the root element
+        <Application /> 
     </Provider>
 );

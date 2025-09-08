@@ -40,3 +40,10 @@ let mapStateToProps = (store)=>{
 }
 
 export default connect(mapStateToProps, null)(Header); //export the component to be used in other files
+
+// Subscriber - this component reads data from store
+// Publisher - this component writes data to store
+// connect() - this is a function which connects react component to redux store
+// connect(mapStateToProps, mapDispatchToProps)(ComponentName)
+// mapStateToProps - this is used to read the data from store and pass it as props
+// mapDispatchToProps - this is used to write the data to store and pass the dispatcher functions as props

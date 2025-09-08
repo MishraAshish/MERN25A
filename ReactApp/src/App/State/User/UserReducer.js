@@ -2,7 +2,7 @@ import * as actionTypes  from "../actionTypes";
 
 let initialState = {
     user : {
-        userName : "",
+        userName : "User Temp Reducer!!",
         password : "",
         street : "",
         mobile : ""

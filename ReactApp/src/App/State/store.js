@@ -15,6 +15,21 @@ import { configureStore } from '@reduxjs/toolkit'; // to create store and holds 
 
 import userReducer from "./User/UserReducer"; //importing user reducer
 
+function logger({ getState }) {
+
+  return next => action => {
+    console.log('will dispatch', action)
+
+    // Call the next dispatch method in the middleware chain.
+    const returnValue = next(action)
+
+    console.log('state after dispatch', getState())
+
+    // This will likely be the action itself, unless
+    // a middleware further in chain changed it.
+    return returnValue
+  }
+}
 
 let rootReducer = combineReducers({
     userState : userReducer // adding user reducer to root reducer
@@ -22,7 +37,8 @@ let rootReducer = combineReducers({
 
 //creating store and passing root reducer to it
 let store = configureStore({
-    reducer : rootReducer
+    reducer : rootReducer,
+    middleware : (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
 });
 
 export default store;
