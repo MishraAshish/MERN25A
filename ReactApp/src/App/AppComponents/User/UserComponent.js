@@ -30,6 +30,7 @@ let UserComponent = (props)=>{
     let [street, updateUserAddress] = useState(user.street)
     let [mobile, updateUserMobile] = useState(user.mobile)
 
+    //action creator - is the function which creates an action object and sends to dispatcher
     let dispatcher = useDispatch() //this is the alternative to connect and mapDispatchToProps
 
     let textBoxOnChange = (evt)=>{
@@ -49,11 +50,12 @@ let UserComponent = (props)=>{
         //     mobile
         // })
 
-        dispatcher(addUserToStore({
-            userName,
-            password, 
-            street, 
-            mobile
+        dispatcher(
+            addUserToStore({ //action to be passed to dispatcher
+                userName,
+                password, 
+                street, 
+                mobile
         }))
 
         alert("User saved successfully in store")

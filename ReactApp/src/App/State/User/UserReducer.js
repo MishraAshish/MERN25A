@@ -18,6 +18,8 @@ let userReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case actionTypes.AddUserToStore:
+            //...state - spread operator to copy the existing state object
+            // product, user, cart => user : action.payload
             return {...state, user: action.payload}
     
         default:
