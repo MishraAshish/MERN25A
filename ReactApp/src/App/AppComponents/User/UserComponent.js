@@ -7,7 +7,7 @@
 import React, { useState, useRef } from "react";
 //import { connect } from "react-redux"; //helps to connect react component with redux store
 
-import { addUserToStore } from "../../State/User/UserAction";
+import { addUserToStore, SaveUserToDBUsingFetch } from "../../State/User/UserAction";
 import { useDispatch, useSelector } from "react-redux";
 
 let UserComponent = (props)=>{
@@ -50,8 +50,16 @@ let UserComponent = (props)=>{
         //     mobile
         // })
 
+        // dispatcher(
+        //     addUserToStore({ //action to be passed to dispatcher
+        //         userName,
+        //         password, 
+        //         street, 
+        //         mobile
+        // }))
+
         dispatcher(
-            addUserToStore({ //action to be passed to dispatcher
+            SaveUserToDBUsingFetch({ //action to be passed to dispatcher
                 userName,
                 password, 
                 street, 
