@@ -9,3 +9,8 @@ let NotFound = ()=>{
 }
 
 export default NotFound;
+
+// run the user part and then
+// create student component, on the lines of user component
+// create student routes and data model
+// it should have studentName, studentCourses, courseProgress as fields
