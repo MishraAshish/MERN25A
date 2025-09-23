@@ -156,7 +156,22 @@ export default class HomeComponent extends Component {
         //console.log("This is the Application component. Test Hot Reloading!");
         console.log("Re-render!");
         return (
-            <div style={{padding: "5px", border: "1px solid red"}}> 
+            <div className={"loadimage form"} style={{border:"1px solid red"}}>
+                <h1>{this.state.title}</h1>
+                <b className="feature">{"Product Feature's :"}</b>
+                <ul>                     
+                    <li>Sign up new users</li>
+                    <li>Login existing users.</li>                
+                    <li>Allow user's to add to cart.</li>
+                    <li>Save the user's cart.</li>
+                    <li>Checkout and pay for items.</li>
+                    <li>Allow users to cancel the order.</li>
+                    <li>Allow users to reorder the cart.</li>
+                    <li>Add products/items to create product collection.</li>
+                    <li>Allow users to give ratings to each product.</li>
+                    <li>Have notifications on top right with logout.</li>
+                </ul>
+            
                 {/* <div style={{backgroundColor: "lightblue", padding: "5px", border: "1px solid black"}}>
                     <h1>Hello, World!</h1>
                     <h4> Sum : {(val1 + val2)}</h4>
@@ -174,22 +189,22 @@ export default class HomeComponent extends Component {
                 </NameComponent> */}
 
                 {/* controlled component - where the value of the input field is controlled by the state of the component */}
-                <input type="text" placeholder="Enter your name" value={this.state.name} 
+                {/*<input type="text" placeholder="Enter your name" value={this.state.name} 
                       onChange={this.onTextChange}
-                    // onChange={(e) => this.setState({name: e.target.value})}
+                    onChange={(e) => this.setState({name: e.target.value})}
                 />
                 <button  onClick={this.incrementCounter}>Increment Timer</button>
                 <p>Counter: {this.state.counter} </p>
-
+                    */}
                 {/* uncontrolled component - where the value of the input field is not controlled by the state of the component */}
-                <form action="/user" method="post" style={{backgroundColor: "lightblue", padding: "5px", border: "1px solid black" , margin: "10px"}} >
+                {/*<form action="/user" method="post" style={{backgroundColor: "lightblue", padding: "5px", border: "1px solid black" , margin: "10px"}} >
                     <input type="text" placeholder="Enter your name - Free Flow" maxLength={25}
                             ref={this.refName} // Attach the ref to the input element
                         />
                     <input type="submit" value="Submit" onClick={this.formSubmit}/>
                 </form>
 
-                <p>Name is {this.props.userName}</p>
+                <p>Name is {this.props.userName}</p>*/}
             </div>
         );
     }

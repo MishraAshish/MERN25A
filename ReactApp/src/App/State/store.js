@@ -13,6 +13,7 @@
 import { combineReducers } from "redux"; // to add logic for building data manipulations and creating new state
 import { configureStore } from '@reduxjs/toolkit'; // to create store and holds the state
 
+import productReducer from "./Product/ProductReducer"; //importing product reducer
 import userReducer from "./User/UserReducer"; //importing user reducer
 
 function logger({ getState }) {
@@ -32,7 +33,8 @@ function logger({ getState }) {
 }
 
 let rootReducer = combineReducers({
-    userState : userReducer // adding user reducer to root reducer
+    userState : userReducer, // adding user reducer to root reducer
+    productState : productReducer // adding product reducer to root reducer
 });
 
 //creating store and passing root reducer to it

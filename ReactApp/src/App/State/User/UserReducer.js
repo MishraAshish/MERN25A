@@ -1,8 +1,8 @@
-import * as actionTypes  from "../actionTypes";
+import * as actionTypes  from "../ActionTypes";
 
 let initialState = {
     user : {
-        userName : "User Temp Reducer!!",
+        userName : "",
         password : "",
         street : "",
         mobile : ""

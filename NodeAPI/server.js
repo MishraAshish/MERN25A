@@ -17,6 +17,9 @@ const studentApp = express() // create a new express application instance for st
 const userRouter = require('./routes/userRoutes') // import the student routes
 const userApp = express() // create a new express application instance for student routes
 
+const productRoute = require("./routes/productRoutes") // import the product routes
+const productApp = express() // create a new express application instance for product routes
+
 globalThis.__dirname = __dirname // set the global __dirname variable to the current directory
 
 // we can use static middleware to serve static files
@@ -27,6 +30,9 @@ app.use('/static', express.static('public')) //localhost:9000/static/loadUserInf
 //application mounting for student routes
 app.use("/student",studentApp) // use the default router for all routes
 studentApp.use('/', studentRouter) // use the default router for all routes
+
+app.use("/product", productApp) 
+productApp.use("/",productRoute)
 
 //application mounting for student routes
 app.use("/user",userApp) // use the default router for all routes path : localhost:9000/user/api/signinup

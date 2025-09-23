@@ -8,6 +8,7 @@ import FooterComponent from "./CommonComponents/FooterComponent";
 import About from "./CommonComponents/AboutComponent.jsx"; //complete path with .jsx extension is required
 import NotFoundComponent from "./CommonComponents/NotFoundComponent";
 import UserComponent from "./AppComponents/User/UserComponent";
+import ProductComponent from "./AppComponents/Product/ProductComponent";
 
 export default class Application extends Component {
     constructor(parameters){
@@ -29,6 +30,7 @@ export default class Application extends Component {
                             <Route path="/" element={<Navigate to="/home" />} />
                             <Route path="/home" element={<HomeComponent />} />
                             <Route path="/login" element={<UserComponent />} />
+                            <Route path="/product" element={<ProductComponent />} />
                             <Route path="/about" element={<About />} />
                             <Route path="/about/:id/:name" element={<About />} /> 
                             <Route path="*" element={<NotFoundComponent />} />
