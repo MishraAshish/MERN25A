@@ -2,6 +2,7 @@
 //type - what has been performed
 //payload - what is the data associated with the action
 import * as actionTypes  from "../ActionTypes";
+import { fetchUserCart } from "../Cart/CartAction";
 
 export const addUserToStore = (user) => {  
     return {
@@ -29,7 +30,7 @@ export const SaveUserToDBUsingFetch = (userObj)=>{
                     console.log(userData)
                     //dispatch or send saved/signin user to reducer
                     dispatch(addUserToStore(userData))
-                    //dispatch(fetchUserCart(userData._id))
+                    dispatch(fetchUserCart(userData._id))
                 })
                 .catch((error)=>console.log(error))
         }

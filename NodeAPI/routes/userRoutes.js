@@ -29,4 +29,16 @@ userRouter.post("/api/signinup", (req, res)=>{
     })
 })
 
+userRouter.get('/api/users', (req, res) => {
+
+    userDataModel.find()//find all the users from users collection and send back
+    .then((users)=>{
+        res.send(users)
+    })
+    .catch((errr)=>{
+        console.log(errr)
+        res.send("Error while fetching users")
+    })
+})
+
 module.exports = userRouter;

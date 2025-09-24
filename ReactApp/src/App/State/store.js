@@ -15,6 +15,7 @@ import { configureStore } from '@reduxjs/toolkit'; // to create store and holds 
 
 import productReducer from "./Product/ProductReducer"; //importing product reducer
 import userReducer from "./User/UserReducer"; //importing user reducer
+import cartReducer from "./Cart/CartReducer";
 
 function logger({ getState }) {
 
@@ -34,7 +35,8 @@ function logger({ getState }) {
 
 let rootReducer = combineReducers({
     userState : userReducer, // adding user reducer to root reducer
-    productState : productReducer // adding product reducer to root reducer
+    productState : productReducer, // adding product reducer to root reducer
+    cartState : cartReducer
 });
 
 //creating store and passing root reducer to it

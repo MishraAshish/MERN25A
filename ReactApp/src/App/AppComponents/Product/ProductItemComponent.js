@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-//import { AddItemToCart } from "../../State/Cart/CartAction";
+import { AddItemToCart } from "../../State/Cart/CartAction";
 
 let ProductItemComponent = ({product})=>{
 
@@ -9,8 +9,8 @@ let ProductItemComponent = ({product})=>{
     let dispatchToAddProduct = useDispatch();
 
     let addItemToCart = (product)=>{
-        alert("We are going to add this product to cart!!! "+ JSON.stringify(product))
-        //dispatchToAddProduct(AddItemToCart(product))        
+        //alert("We are going to add this product to cart!!! "+ JSON.stringify(product))
+        dispatchToAddProduct(AddItemToCart(product))        
     }
 
     return(
