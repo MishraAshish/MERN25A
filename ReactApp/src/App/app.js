@@ -10,6 +10,7 @@ import NotFoundComponent from "./CommonComponents/NotFoundComponent";
 import UserComponent from "./AppComponents/User/UserComponent";
 import ProductComponent from "./AppComponents/Product/ProductComponent";
 import CartComponent from "./AppComponents/Cart/CartComponent";
+import Checkout from "./AppComponents/Checkout/CheckoutComponent";
 
 export default class Application extends Component {
     constructor(parameters){
@@ -33,6 +34,7 @@ export default class Application extends Component {
                             <Route path="/login" element={<UserComponent />} />
                             <Route path="/product" element={<ProductComponent />} />
                             <Route path="/cart" element={<CartComponent />} />
+                            <Route path="/checkout" element={<Checkout />} />
                             <Route path="/about" element={<About />} />
                             <Route path="/about/:id/:name" element={<About />} /> 
                             <Route path="*" element={<NotFoundComponent />} />
