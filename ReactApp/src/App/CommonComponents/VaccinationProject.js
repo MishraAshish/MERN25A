@@ -1,5 +1,4 @@
-// System to help - Vaccination System - Next Gen Health Care
-
+// System to help - Vaccination System of      
 // Application should be developed to help government meet the vaccination task in collboration with Government and Private hospitals
 // Setup Needs to be done by Trainees (React(WebPack) and NodeAPI) both
 
@@ -18,6 +17,7 @@
 // Reporting 
 // 1. Show reports on the basis of Age, Gender, Pre-Existing Disease, Medical Practitionar etc
 // 2. Bar Chart and Pie Chart Both -> d3 reports module of 
+
 // 3. Report to show number of doses administered each day
 // 4. Report to Show Percentage of Population Covered
 
