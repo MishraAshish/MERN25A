@@ -28,6 +28,7 @@ let Header = (props)=>{
                 <NavLink to="/cart"  className="button" activeclassname="true"> Cart </NavLink>               
                 <NavLink to="/checkout"  className="button" activeclassname="true"> Checkout </NavLink>               
                 <NavLink to="/about"  className="button" activeclassname="true"> About </NavLink>               
+                <NavLink to="/hooks"  className="button" activeclassname="true"> Hooks </NavLink>               
             </div>
 
             {/* <button onClick={navigateWithName} >About With Name</button> */}
