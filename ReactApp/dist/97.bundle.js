@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreactapp=self.webpackChunkreactapp||[]).push([[97],{97:(e,a,r)=>{r.r(a),r.d(a,{default:()=>l});var t=r(540);const l=function(){return t.createElement("div",{style:{backgroundColor:"lightcoral",padding:"20px",border:"1px solid black"}},t.createElement("h2",null,"Page is under development!!"))}}}]);

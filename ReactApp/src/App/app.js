@@ -1,17 +1,17 @@
-import React, { Component, PureComponent, Suspense } from "react";
+import React, { Component, PureComponent, Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./app.css";
 //import "./style.css";
-import HeaderComponent from "./CommonComponents/HeaderComponent";
-import HomeComponent from "./CommonComponents/HomeComponent";
-import FooterComponent from "./CommonComponents/FooterComponent";
-import About from "./CommonComponents/AboutComponent.jsx"; //complete path with .jsx extension is required
-import NotFoundComponent from "./CommonComponents/NotFoundComponent";
-import UserComponent from "./AppComponents/User/UserComponent";
-import ProductComponent from "./AppComponents/Product/ProductComponent";
-import CartComponent from "./AppComponents/Cart/CartComponent";
-import Checkout from "./AppComponents/Checkout/CheckoutComponent";
-import Hooks from "./AppComponents/Hooks/UnderstandingHooks.js";
+let HeaderComponent =  lazy(()=> import("./CommonComponents/HeaderComponent"));
+let HomeComponent =  lazy(()=> import("./CommonComponents/HomeComponent"));
+let FooterComponent =  lazy(()=> import("./CommonComponents/FooterComponent"));
+let About =  lazy(()=> import("./CommonComponents/AboutComponent.jsx")); //complete path with .jsx extension is required
+let NotFoundComponent =  lazy(()=> import("./CommonComponents/NotFoundComponent"));
+let UserComponent =  lazy(()=> import("./AppComponents/User/UserComponent"));
+let ProductComponent =  lazy(()=> import("./AppComponents/Product/ProductComponent"));
+let CartComponent =  lazy(()=> import("./AppComponents/Cart/CartComponent"));
+let Checkout =  lazy(()=> import("./AppComponents/Checkout/CheckoutComponent"));
+//import Hooks from "./AppComponents/Hooks/UnderstandingHooks.js";
 
 export default class Application extends Component {
     constructor(parameters){
@@ -39,7 +39,7 @@ export default class Application extends Component {
                             <Route path="/about" element={<About />} />
                             <Route path="/about/:id/:name" element={<About />} /> 
                             <Route path="*" element={<NotFoundComponent />} />
-                            <Route path="/hooks" element={<Hooks />} />
+                            {/* <Route path="/hooks" element={<Hooks />} /> */}
                             {/* <HomeComponent />  
                             <About /> */}
                         </Routes>              
